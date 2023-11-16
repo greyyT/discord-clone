@@ -4,12 +4,15 @@ import { Plus } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { ActionTooltip } from '@/components/action-tooltip';
+import { useModal } from '@/hooks/modal-store';
 
 const NavigationAction = () => {
+  const { onOpen } = useModal();
+
   return (
-    <div className="">
+    <div>
       <ActionTooltip side="right" align="center" label="Add a server">
-        <button className="group flex items-center">
+        <button className="group flex items-center" onClick={() => onOpen('createServer')}>
           <div
             className={cn(
               'flex items-center justify-center',

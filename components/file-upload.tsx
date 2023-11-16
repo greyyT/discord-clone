@@ -15,8 +15,6 @@ interface FileUploadProps {
 export const FileUpload: React.FC<FileUploadProps> = ({ onChange, value, endpoint }) => {
   const fileType = value?.split('.').pop();
 
-  console.log('This is value', value);
-
   if (value && fileType !== 'pdf') {
     return (
       <div className="relative h-20 w-20">
@@ -36,7 +34,6 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onChange, value, endpoin
     <UploadDropzone
       endpoint={endpoint}
       onClientUploadComplete={(res) => {
-        console.log('This is on client upload complete', res?.[0]);
         onChange(res?.[0].url);
       }}
       onUploadError={(err) => {
