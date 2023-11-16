@@ -5,7 +5,7 @@ import { db } from '@/lib/db';
 import { Separator } from '@/components/ui/separator';
 import { ScrollArea } from '@/components/ui/scroll-area';
 
-import { NavigationAction } from '.';
+import { NavigationAction, NavigationItem } from '.';
 
 const NavigationSidebar = async () => {
   const profile = await currentProfile();
@@ -30,7 +30,9 @@ const NavigationSidebar = async () => {
       <Separator className="h-[2px] bg-zinc-300 dark:bg-zinc-700 rounded-md w-10 mx-auto" />
       <ScrollArea className="flex-1 w-full">
         {servers.map((server) => (
-          <div className="" key={server.id}></div>
+          <div className="" key={server.id}>
+            <NavigationItem id={server.id} name={server.name} imageUrl={server.imageUrl} />
+          </div>
         ))}
       </ScrollArea>
     </div>
