@@ -1,1 +1,1 @@
-export type ModalType = 'createServer';
+export type ModalType = 'createServer' | 'invite';
