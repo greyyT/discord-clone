@@ -5,8 +5,9 @@ import { Hash, Mic, ShieldAlert, ShieldCheck, Video } from 'lucide-react';
 import { db } from '@/lib/db';
 import { currentProfile } from '@/lib/current-profile';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { Separator } from '@/components/ui/separator';
 
-import { ServerHeader, ServerSearch } from '.';
+import { ServerHeader, ServerSearch, ServerSection } from '.';
 
 interface SeverSidebarProps {
   serverId: string;
@@ -108,6 +109,17 @@ const ServerSidebar: React.FC<SeverSidebarProps> = async ({ serverId }) => {
             ]}
           />
         </div>
+        <Separator className="bg-zinc-200 dark:bg-zinc-700 rounded-md my-2" />
+        {!!textChannels.length && (
+          <div className="mb-2">
+            <ServerSection
+              sectionType="channels"
+              channelType={ChannelType.TEXT}
+              role={userRole}
+              label="Text Channels"
+            />
+          </div>
+        )}
       </ScrollArea>
     </div>
   );
