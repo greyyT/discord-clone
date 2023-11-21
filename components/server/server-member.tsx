@@ -24,8 +24,13 @@ const ServerMember: React.FC<ServerMemberProps> = ({ member, server }) => {
 
   const icon = roleIconMap[member.role];
 
+  const onMemberSelect = () => {
+    router.push(`/servers/${server.id}/conversations/${member.id}`);
+  };
+
   return (
     <button
+      onClick={onMemberSelect}
       className={cn(
         'group',
         'p-2',
