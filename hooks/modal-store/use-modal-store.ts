@@ -1,10 +1,11 @@
 import { create } from 'zustand';
 
 import { ModalType } from '.';
-import { Server } from '@prisma/client';
+import { ChannelType, Server } from '@prisma/client';
 
 interface ModalData {
   server?: Server;
+  channelType?: ChannelType;
 }
 
 interface ModalStore {

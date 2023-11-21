@@ -15,6 +15,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useModal } from '@/hooks/modal-store';
 import { cn } from '@/lib/utils';
+import { useEffect } from 'react';
 
 const formSchema = z.object({
   name: z
@@ -32,7 +33,8 @@ export const CreateChannelModal = () => {
   const router = useRouter();
   const params = useParams();
 
-  const { isOpen, onClose, type } = useModal();
+  const { isOpen, onClose, type, data } = useModal();
+  const { channelType } = data;
 
   const isModalOpen = isOpen && type === 'createChannel';
 
@@ -40,9 +42,17 @@ export const CreateChannelModal = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
-      type: ChannelType.TEXT,
+      type: channelType || ChannelType.TEXT,
     },
   });
+
+  useEffect(() => {
+    if (channelType) {
+      form.setValue('type', channelType);
+    } else {
+      form.setValue('type', ChannelType.TEXT);
+    }
+  }, [channelType, form]);
 
   const isLoading = form.formState.isSubmitting;
 
