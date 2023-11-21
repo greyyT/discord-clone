@@ -6,6 +6,7 @@ import { useParams, useRouter } from 'next/navigation';
 
 import { cn } from '@/lib/utils';
 import { ActionTooltip } from '@/components/action-tooltip';
+import { useModal } from '@/hooks/modal-store';
 
 interface ServerChannelProps {
   channel: Channel;
@@ -22,6 +23,8 @@ const iconMap = {
 const ServerChannel: React.FC<ServerChannelProps> = ({ channel, server, role }) => {
   const router = useRouter();
   const params = useParams();
+
+  const { onOpen } = useModal();
 
   const Icon = iconMap[channel.type];
 
@@ -68,6 +71,7 @@ const ServerChannel: React.FC<ServerChannelProps> = ({ channel, server, role }) 
           </ActionTooltip>
           <ActionTooltip label="Delete">
             <Trash
+              onClick={() => onOpen('deleteChannel', { server, channel })}
               className={cn(
                 'hidden group-hover:block',
                 'w-4 h-4',
