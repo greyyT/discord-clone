@@ -60,6 +60,7 @@ const ServerChannel: React.FC<ServerChannelProps> = ({ channel, server, role }) 
         <div className="ml-auto flex items-center gap-x-2">
           <ActionTooltip label="Edit">
             <Edit
+              onClick={() => onOpen('editChannel', { server, channel })}
               className={cn(
                 'hidden group-hover:block',
                 'w-4 h-4',
