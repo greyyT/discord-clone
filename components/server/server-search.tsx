@@ -13,6 +13,7 @@ import {
   CommandItem,
   CommandList,
 } from '@/components/ui/command';
+import { UserAvatar } from '../user-avatar';
 
 interface ServerSearchProps {
   data: {
@@ -23,6 +24,7 @@ interface ServerSearchProps {
           icon: React.ReactNode;
           name: string;
           id: string;
+          imageUrl?: string;
         }[]
       | undefined;
   }[];
@@ -112,10 +114,21 @@ const ServerSearch: React.FC<ServerSearchProps> = ({ data }) => {
 
             return (
               <CommandGroup key={label} heading={label}>
-                {data?.map(({ id, icon, name }) => (
+                {data?.map(({ id, icon, name, imageUrl }) => (
                   <CommandItem key={id} className="cursor-pointer" onSelect={() => onSearchSelect({ id, type })}>
-                    {icon}
-                    <span>{name}</span>
+                    {type === 'channel' && (
+                      <>
+                        {icon}
+                        <span>{name}</span>
+                      </>
+                    )}
+                    {type === 'member' && (
+                      <>
+                        <UserAvatar src={imageUrl} className="w-6 h-6 md:w-6 md:h-6" />
+                        <span className="ml-2">{name}</span>
+                        <span className="ml-2">{icon}</span>
+                      </>
+                    )}
                   </CommandItem>
                 ))}
               </CommandGroup>
