@@ -1,6 +1,7 @@
 import { Hash, Menu } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
+import { MobileToggle } from '@/components/mobile-toggle';
 
 interface ChatHeaderProps {
   serverId: string;
@@ -21,7 +22,7 @@ const ChatHeader = ({ serverId, name, type, imageUrl }: ChatHeaderProps) => {
         'border-b-2',
       )}
     >
-      <Menu />
+      <MobileToggle serverId={serverId} />
       {type === 'channel' && <Hash className="w-5 h-5 text-zinc-500 dark:text-zinc-400 mr-2" />}
       <p className="font-semibold text-md text-black dark:text-white">{name}</p>
     </div>
