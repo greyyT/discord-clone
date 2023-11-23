@@ -8,4 +8,5 @@ export type ModalType =
   | 'deleteServer'
   | 'deleteChannel'
   | 'editChannel'
-  | 'messageFile';
+  | 'messageFile'
+  | 'deleteMessage';
