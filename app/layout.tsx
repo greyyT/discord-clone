@@ -4,7 +4,7 @@ import { Open_Sans } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
 
 import { cn } from '@/lib/utils';
-import { ModalProvider, ThemeProvider, SocketProvider } from '@/components/providers';
+import { ModalProvider, ThemeProvider, SocketProvider, QueryProvider } from '@/components/providers';
 
 const font = Open_Sans({ subsets: ['latin'] });
 
@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem storageKey="discord-theme">
             <SocketProvider>
               <ModalProvider />
-              {children}
+              <QueryProvider>{children}</QueryProvider>
             </SocketProvider>
           </ThemeProvider>
         </body>
