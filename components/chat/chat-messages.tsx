@@ -6,12 +6,12 @@ import { Loader2, ServerCrash } from 'lucide-react';
 import { format } from 'date-fns';
 
 import { useChatQuery } from '@/hooks/chat-query';
-
-import { ChatWelcome } from './chat-welcome';
-import { ChatItem } from './chat-item';
 import { MessageWithMemberWithProfile } from '@/types';
 import { useChatSocket } from '@/hooks/socket';
 import { useChatScroll } from '@/hooks/chat-scroll';
+
+import { ChatWelcome } from './chat-welcome';
+import { ChatItem } from './chat-item';
 
 const DATE_FORMAT = 'd MMM yyyy, HH:mm';
 
