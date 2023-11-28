@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   mysql:
-    image: mysql:5.7
+    image: mysql:5.6
     container_name: mysql
     restart: always
     environment:
@@ -10,7 +10,22 @@ services:
       MYSQL_DATABASE: db
       MYSQL_USER: user
       MYSQL_PASSWORD: password
-    ports:
-      - 3306:3306
+    networks:
+      - shared-network
     volumes:
       - ./mysql:/var/lib/mysql
+
+  nextjs:
+    build: ./
+    container_name: nextjs
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    networks:
+      - shared-network
+    ports:
+      - 3000:3000
+
+networks:
+  shared-network:
+    driver: bridge

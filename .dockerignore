@@ -1,0 +1,11 @@
+.git/
+.gitignore
+.next/
+.vscode/
+.prettierrc
+.dockerignore
+Dockerfile
+docker-compose.yml
+node_modules/
+nginx/
+Makefile
